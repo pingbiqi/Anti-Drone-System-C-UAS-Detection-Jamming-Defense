@@ -1,0 +1,40 @@
+name: Daily Repo Active Bot (Smart Version)
+on:
+  schedule:
+    - cron: '0 2 * * *' # 每天北京时间上午 10:00 运行
+  workflow_dispatch:
+jobs:
+  update-active-log:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Smart Update README
+        run: |
+          CURRENT_DATE=$(date -d "+8 hours" +"%Y-%m-%d %H:%M:%S")
+          TARGET_FILE="README.md"
+          
+          # 检查是否已存在更新标记
+          if grep -q "最后技术支持更新" "$TARGET_FILE"; then
+            # 如果存在，替换旧行
+            sed -i "/最后技术支持更新/c\最后技术支持更新：$CURRENT_DATE (UTC+8)" "$TARGET_FILE"
+          else
+            # 如果不存在，追加新行
+            echo -e "\n---\n### 📅 自动维护日志 (Daily Tech Support Update)\n\n最后技术支持更新：$CURRENT_DATE (UTC+8)\n" >> "$TARGET_FILE"
+          fi
+
+      - name: Commit and Push
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action Bot"
+          git add README.md
+          if git diff --staged --quiet; then
+            echo "No changes detected"
+            exit 0
+          else
+            git commit -m "docs: daily maintenance sync $CURRENT_DATE"
+            git push
+          fi
