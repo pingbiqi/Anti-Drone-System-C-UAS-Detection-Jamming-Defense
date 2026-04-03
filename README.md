@@ -56,3 +56,8 @@ $$\frac{J}{S} = \frac{P_j \cdot G_j \cdot G_{rj} \cdot L_s^2}{P_s \cdot G_s \cdo
 
 > **法律声明 (Legal Notice):**
 > 相关设备的使用必须严格遵守所在国家/地区的无线电管理法规。本项目仅提供技术理论与仿真参考。
+
+---
+### 📅 自动维护日志 (Daily Tech Support Update)
+
+最后技术支持更新：2026-04-03 07:10:38 (UTC+8)
