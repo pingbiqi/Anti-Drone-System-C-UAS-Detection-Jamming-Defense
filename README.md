@@ -60,4 +60,4 @@ $$\frac{J}{S} = \frac{P_j \cdot G_j \cdot G_{rj} \cdot L_s^2}{P_s \cdot G_s \cdo
 ---
 ### 📅 自动维护日志 (Daily Tech Support Update)
 
-最后技术支持更新：2026-05-23 13:33:18 (UTC+8)
+最后技术支持更新：2026-05-24 13:54:04 (UTC+8)
